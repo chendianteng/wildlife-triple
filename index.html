@@ -40,9 +40,8 @@ body{touch-action:manipulation}
 #toolbar{position:absolute;right:131px;top:128px;width:186px;z-index:50000;color:#fff}
 .caption{text-align:center;color:#a9e7d2;font-size:16px;margin-bottom:15px}
 .tool{width:180px;height:89px;margin-bottom:16px;border:3px solid #f2c33b;border-radius:22px;background:linear-gradient(#fff8b5,#ffe26f);color:#b76a13;font-weight:900;font-size:20px;box-shadow:0 5px 8px rgba(0,65,61,.22);position:relative;cursor:pointer}.tool .ico{font-size:29px;display:block}.tool .count{position:absolute;right:-8px;top:-13px;background:#168f63;color:#eaffcf;border:3px solid #b9f6aa;width:37px;height:37px;border-radius:50%;display:grid;place-items:center;font-size:20px}
-#mascot{position:absolute;right:87px;bottom:8px;font-size:116px;filter:drop-shadow(0 8px 10px rgba(0,65,59,.22));z-index:45000;pointer-events:none}
 #helpBtn{position:absolute;right:206px;bottom:193px;width:38px;height:38px;border-radius:50%;border:3px solid rgba(174,238,193,.7);background:#3caa88;color:white;font-size:22px;font-weight:900;z-index:50000}
-#newBtn{position:absolute;right:68px;top:8px;border:0;background:transparent;color:#eaffd6;font-size:38px;font-weight:1000;z-index:50000;cursor:pointer}
+#newBtn{position:absolute;right:131px;top:48px;width:180px;height:52px;border:1px solid #a6d6b980;border-radius:14px;background:#09695f;color:#eaffd6;font-size:20px;font-weight:800;z-index:50000;cursor:pointer}
 #status{position:absolute;left:1100px;top:22px;color:#dcfff1;font-size:14px;font-weight:800;z-index:50000}
 #progress{position:absolute;left:628px;top:26px;width:202px;height:7px;border-radius:99px;background:rgba(2,75,78,.42);z-index:50000}#progress i{display:block;height:100%;width:2%;border-radius:inherit;background:#ffe78c}
 #endOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,32,36,.54);z-index:1000000}#endOverlay.show{display:flex}
@@ -52,15 +51,12 @@ body{touch-action:manipulation}
 #settings{position:absolute;left:30px;top:32px;width:180px;z-index:50000;color:#eeffe6}
 #gameIcon{display:block;width:72px;height:72px;border-radius:20px;box-shadow:0 5px 14px #004f4b55;border:2px solid #d8f3bb}
 #settings h1{font-size:25px;line-height:1.2;margin:14px 0 0}
-.settings-trigger{display:grid;place-items:center;width:46px;height:46px;border:1px solid #8bd6bc80;border-radius:50%;background:#075d5366;color:#eaffdd;cursor:pointer}
-#settingsBtn{position:absolute;right:0;top:10px}svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool .ico{height:32px;margin-bottom:4px}.tool svg{width:30px;height:30px}
-#settingsDialog{width:min(360px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;border:2px solid #a8c890;border-radius:22px;background:#fff8e6;color:#245950;padding:24px;font-family:inherit;box-shadow:0 20px 70px #003b3955}
-#settingsDialog::backdrop{background:#002e3266}.dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}.dialog-heading h2{font-size:23px;margin:0}.dialog-heading button{border:0;border-radius:9px;background:#087568;color:#fff8e6;padding:9px 14px;font:600 14px inherit;cursor:pointer}
-.settings-row{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:16px 0;font-size:16px}.settings-row select{min-width:142px;padding:10px 12px;border:1px solid #a4c2a0;border-radius:10px;background:#fffdf5;color:#245950;font:inherit;cursor:pointer}#settingsDialog p{font-size:13px;line-height:1.5;margin:18px 0 0;color:#61816b}
+ .language-toggle{border:1px solid #a6d6b980;border-radius:12px;background:#09695f;color:#fff7d9;padding:8px 14px;cursor:pointer;font:800 22px system-ui}.language-toggle small{display:block;font-size:11px;font-weight:500;color:#bde5d0;margin-bottom:2px}#languageBtn{position:absolute;right:0;top:8px}
+svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.tool .ico{height:32px;margin-bottom:4px}.tool svg{width:30px;height:30px}
+#skipIntro{display:block;margin-top:14px;border:0;border-bottom:1px solid #acd5b3;padding:3px 0;background:transparent;color:#ffe895;font:600 14px system-ui;cursor:pointer}#skipIntro[hidden]{display:none}
 .artwork{display:block;width:100%;height:100%;padding:3px;pointer-events:none;user-select:none;border-radius:inherit;overflow:hidden}.match-ghost{border-radius:10px;overflow:hidden}
 .tile,.tray-card,.reserve-card{border-color:#417b4c;border-radius:10px;background:#fcf7e8;overflow:hidden;box-shadow:0 4px 0 #2c663e,0 6px 8px #003f3933}.tile.clickable{box-shadow:0 4px 0 #387848,0 6px 9px #003f3938}.reserve-card{padding:0}.stack-back{border-color:#396848;border-radius:10px;background:#7d9873}
-#mascot{width:122px;height:122px;right:124px;bottom:20px;border-radius:50%;overflow:hidden;box-shadow:0 4px 0 #3c8b60;filter:none;background:#fcf7e8}
-#endCard{position:relative;padding-top:62px}#endCard #endSettingsBtn{position:absolute;right:12px;top:10px;padding:0;margin:0;width:36px;height:36px;background:transparent;color:#478268}#endSettingsBtn svg{width:23px;height:23px}
+#endCard{position:relative;padding-top:70px}#endCard #endLanguageBtn{position:absolute;right:12px;top:10px;padding:7px 12px;margin:0;font-size:16px}
 #guide{position:absolute;left:30px;top:275px;width:180px;z-index:50000;border:1px solid #83cdb4;border-radius:17px;padding:16px;background:rgba(4,83,77,.88);color:#e9ffdf;font-size:16px;line-height:1.6}#guide h2{font-size:18px;margin:0 0 10px;color:#ffe895}#guide p{margin:0 0 12px}#guide .rule{font-size:13px;color:#b8e4d0;margin:0}#feedback{position:absolute;left:340px;top:537px;width:590px;text-align:center;z-index:42000;color:#fff6b0;font-size:19px;font-weight:800;pointer-events:none}
 #effects{position:absolute;inset:0;pointer-events:none;z-index:60000}.match-ghost{position:absolute;width:66px;height:66px;display:grid;place-items:center;font-size:40px;animation:match-pop .38s ease-out forwards;pointer-events:none;filter:drop-shadow(0 0 6px #ffe78c)}@keyframes match-pop{0%{opacity:.95;transform:scale(.85)}35%{opacity:1;transform:translateY(-10px) scale(1.15)}100%{opacity:0;transform:translateY(-35px) scale(.4)}}
 button:focus-visible{outline:4px solid #fff09b;outline-offset:3px}.tool:disabled{opacity:.5;cursor:default}.tile.blocked{opacity:1}#endCard button{margin:5px}#endCard #classicNext{background:#e6bf43;color:#245950}
@@ -77,10 +73,10 @@ button:focus-visible{outline:4px solid #fff09b;outline-offset:3px}.tool:disabled
 </head>
 <body>
 <div id="viewport"><div id="game">
-  <header id="settings"><img id="gameIcon" src="assets/game-icon.png" alt="" width="72" height="72" /><h1 data-i18n="title"></h1><button id="settingsBtn" class="settings-trigger" aria-haspopup="dialog" aria-controls="settingsDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6M16 14v6"/></svg></button></header>
-  <aside id="guide"><h2 data-i18n="howTitle"></h2><p id="guideText" aria-live="polite"></p><p class="rule" data-i18n="rules"></p></aside>
+  <header id="settings"><img id="gameIcon" src="assets/game-icon.png" alt="" width="72" height="72" /><h1 data-i18n="title"></h1><button id="languageBtn" class="language-toggle"><small data-i18n="language"></small><span></span></button></header>
+  <aside id="guide"><h2 data-i18n="howTitle"></h2><p id="guideText" aria-live="polite"></p><p class="rule" data-i18n="rules"></p><button id="skipIntro" data-i18n="tryClassic" hidden></button></aside>
   <div id="feedback" role="status"></div><div id="effects" aria-hidden="true"></div>
-  <div id="progress"><i id="progressFill"></i></div><div id="status"></div><button id="newBtn">↻</button>
+  <div id="progress"><i id="progressFill"></i></div><div id="status"></div><button id="newBtn" data-i18n="restart"></button>
   <div id="board"></div>
   <div id="leftStack" class="side-stack"></div><div id="rightStack" class="side-stack"></div>
   <div id="reserve"></div><div id="trayShell"><div id="tray"></div></div>
@@ -89,15 +85,9 @@ button:focus-visible{outline:4px solid #fff09b;outline-offset:3px}.tool:disabled
     <button class="tool" id="moveBtn"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v6h16v-6M12 15V3m-5 5 5-5 5 5"/></svg></span><span data-i18n="move"></span><span class="count">1</span></button>
     <button class="tool" id="undoBtn"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 7 7v4"/></svg></span><span data-i18n="undo"></span><span class="count">1</span></button>
   </div>
-  <button id="helpBtn">?</button><div id="mascot" aria-hidden="true"><span class="artwork" style="--art-x:0%;--art-y:0%"></span></div>
-  <div id="endOverlay" role="dialog" aria-modal="true" aria-labelledby="endTitle"><div id="endCard"><button id="endSettingsBtn" class="settings-trigger" aria-haspopup="dialog" aria-controls="settingsDialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16M8 4v6M16 14v6"/></svg></button><h2 id="endTitle"></h2><p></p><button id="replayBtn" data-i18n="replay"></button><button id="classicNext" data-i18n="tryClassic" hidden></button></div></div>
+  <button id="helpBtn">?</button>
+  <div id="endOverlay" role="dialog" aria-modal="true" aria-labelledby="endTitle"><div id="endCard"><button id="endLanguageBtn" class="language-toggle"><span></span></button><h2 id="endTitle"></h2><p></p><button id="replayBtn" data-i18n="replay"></button><button id="classicNext" data-i18n="tryClassic" hidden></button></div></div>
 </div></div><div id="rotate" data-i18n="rotate"></div>
-<dialog id="settingsDialog" aria-labelledby="settingsTitle">
-  <div class="dialog-heading"><h2 id="settingsTitle" data-i18n="settings"></h2><button id="closeSettings" data-i18n="done"></button></div>
-  <label class="settings-row"><span data-i18n="language"></span><select id="languageSelect"><option value="zh">中文</option><option value="en">English</option></select></label>
-  <label class="settings-row"><span data-i18n="mode"></span><select id="modeSelect"><option value="easy" data-i18n="easy"></option><option value="classic" data-i18n="classic"></option></select></label>
-  <p data-i18n="modeNote"></p>
-</dialog>
 <script>
 (()=>{
 'use strict';
@@ -111,13 +101,15 @@ function paintAnimal(element,type){const ns='http://www.w3.org/2000/svg',art=doc
 
 const TILE=72, STEP=74;
 const copy={
- zh:{settings:'设置',done:'完成',title:'森林三消',easy:'入门',classic:'经典',modeNote:'切换模式会开始新一局',caption:'三张相同自动消除',shuffle:'洗牌',move:'移出',undo:'撤回',replay:'再来一局',tryClassic:'挑战经典模式',rotate:'请将手机横过来玩',howTitle:'怎么玩',rules:'点击亮着的卡牌，收集 3 张相同图案即可消除。别让 7 个卡槽装满！',intro:'先点一张发光的卡牌，试试看！',one:'很好！再找 2 张相同的 {animal}。',two:'再点 1 张 {animal}，马上消除！',matched:'消除了！空位已释放，继续找下一组吧。',classicGuide:'先观察亮着的牌，尽量凑齐同一种。暗色卡牌要移开上面的牌才能选。',match:'三消成功！已消除 {count} 组',remaining:'剩余 {remaining}/{total}',win:'通关！',winText:'全部卡牌已经清空。',easyWin:'太棒了，完成了 6 次三消！准备好挑战叠层棋盘了吗？',lose:'游戏结束',loseText:'7 个卡槽已满。再试一次，优先凑齐三张相同的牌。',restart:'重新开始',hint:'提示',language:'语言',mode:'游戏模式',shuffleTip:'打乱剩余卡牌的图案',moveTip:'将前 3 张卡牌移到暂存区，点击可放回',undoTip:'撤回上一步操作',moved:'卡牌已暂存，点击它们可放回卡槽。',shuffled:'已经洗牌，找找新的组合。',undone:'已撤回上一步。',hintText:'试试发光的卡牌。',clearLabel:'可选择',blockedLabel:'被遮挡',reserveLabel:'放回卡槽'},
- en:{settings:'Settings',done:'Done',title:'Wildlife Triple',easy:'Beginner',classic:'Classic',modeNote:'Changing mode starts a new game',caption:'Match 3 to clear',shuffle:'Shuffle',move:'Set aside',undo:'Undo',replay:'Play again',tryClassic:'Try Classic',rotate:'Turn your phone sideways to play',howTitle:'How to play',rules:'Tap bright tiles. Collect 3 of the same animal to clear them. Keep the 7-slot tray from filling up!',intro:'Tap a glowing tile to get started!',one:'Nice! Find 2 more {animal} tiles.',two:'One more {animal} to make your first match!',matched:'Cleared! Those slots are free. Find your next trio.',classicGuide:'Look for matching bright tiles. Dark tiles unlock when you remove the tiles covering them.',match:'Triple matched! {count} sets cleared',remaining:'Left {remaining}/{total}',win:'You did it!',winText:'Every tile is cleared.',easyWin:'You made 6 matches! Ready to try a layered board?',lose:'Tray full',loseText:'All 7 slots are full. Try again and focus on matching three of a kind.',restart:'Restart game',hint:'Hint',language:'Language',mode:'Game mode',shuffleTip:'Shuffle the animals on the remaining tiles',moveTip:'Set the first 3 tiles aside; tap them to return',undoTip:'Take back your last move',moved:'Tiles set aside. Tap them to return to the tray.',shuffled:'Shuffled! Look for new matches.',undone:'Last move undone.',hintText:'Try a glowing tile.',clearLabel:'Available',blockedLabel:'Covered',reserveLabel:'Return to tray'}
+ zh:{introTitle:'入门试玩',title:'森林三消',easy:'入门',classic:'经典',modeNote:'切换模式会开始新一局',caption:'三张相同自动消除',shuffle:'洗牌',move:'移出',undo:'撤回',replay:'再来一局',tryClassic:'挑战经典模式',rotate:'请将手机横过来玩',howTitle:'怎么玩',rules:'点击亮着的卡牌，收集 3 张相同图案即可消除。别让 7 个卡槽装满！',intro:'先点一张发光的卡牌，试试看！',one:'很好！再找 2 张相同的 {animal}。',two:'再点 1 张 {animal}，马上消除！',matched:'继续凑齐三张。移开上层卡牌，就能解锁下面的图案。',classicGuide:'先观察亮着的牌，尽量凑齐同一种。暗色卡牌要移开上面的牌才能选。',match:'三消成功！已消除 {count} 组',remaining:'剩余 {remaining}/{total}',win:'通关！',winText:'全部卡牌已经清空。',easyWin:'规则已经掌握了，接下来玩经典关吧！',lose:'游戏结束',loseText:'7 个卡槽已满。再试一次，优先凑齐三张相同的牌。',restart:'重来一局',hint:'提示',language:'语言',mode:'游戏模式',shuffleTip:'打乱剩余卡牌的图案',moveTip:'将前 3 张卡牌移到暂存区，点击可放回',undoTip:'撤回上一步操作',moved:'卡牌已暂存，点击它们可放回卡槽。',shuffled:'已经洗牌，找找新的组合。',undone:'已撤回上一步。',hintText:'试试发光的卡牌。',clearLabel:'可选择',blockedLabel:'被遮挡',reserveLabel:'放回卡槽'},
+ en:{introTitle:'First game',title:'Wildlife Triple',easy:'Beginner',classic:'Classic',modeNote:'Changing mode starts a new game',caption:'Match 3 to clear',shuffle:'Shuffle',move:'Set aside',undo:'Undo',replay:'Play again',tryClassic:'Try Classic',rotate:'Turn your phone sideways to play',howTitle:'How to play',rules:'Tap bright tiles. Collect 3 of the same animal to clear them. Keep the 7-slot tray from filling up!',intro:'Tap a glowing tile to get started!',one:'Nice! Find 2 more {animal} tiles.',two:'One more {animal} to make your first match!',matched:'Keep matching three. Remove the upper tiles to unlock the ones underneath.',classicGuide:'Look for matching bright tiles. Dark tiles unlock when you remove the tiles covering them.',match:'Triple matched! {count} sets cleared',remaining:'Left {remaining}/{total}',win:'You did it!',winText:'Every tile is cleared.',easyWin:'You know the rules! Time to try Classic.',lose:'Tray full',loseText:'All 7 slots are full. Try again and focus on matching three of a kind.',restart:'New game',hint:'Hint',language:'Language',mode:'Game mode',shuffleTip:'Shuffle the animals on the remaining tiles',moveTip:'Set the first 3 tiles aside; tap them to return',undoTip:'Take back your last move',moved:'Tiles set aside. Tap them to return to the tray.',shuffled:'Shuffled! Look for new matches.',undone:'Last move undone.',hintText:'Try a glowing tile.',clearLabel:'Available',blockedLabel:'Covered',reserveLabel:'Return to tray'}
 };
 function preference(key,fallback){try{return localStorage.getItem('wildlife-triple-'+key)||fallback}catch{return fallback}}
 function remember(key,value){try{localStorage.setItem('wildlife-triple-'+key,value)}catch{}}
 let lang=preference('language',navigator.language.toLowerCase().startsWith('zh')?'zh':'en');if(!copy[lang])lang='en';
-let mode=preference('mode','easy');if(!['easy','classic'].includes(mode))mode='easy';
+// Older saved preferences also identify returning players.
+let mode=preference('visited','')||preference('mode','')||preference('language','')?'classic':'easy';
+remember('visited','1');
 const t=(key,values={})=>Object.entries(values).reduce((text,[key,value])=>text.replaceAll('{'+key+'}',value),copy[lang][key]);
 let session=null;
 const activeSeconds=()=>session?Math.floor((session.ms+(session.since===null?0:performance.now()-session.since))/1000):0;
@@ -160,7 +152,14 @@ const LAYERS=[
 ];
 function makeNodes(){
   const nodes=[];let id=0;
-  if(mode==='easy')return Array.from({length:18},(_,i)=>({id:'b'+i,kind:'board',z:0,x:375+(i%6)*84,y:164+Math.floor(i/6)*90,active:true,type:Math.floor(i/3)%3}));
+  if(mode==='easy'){
+    const lower=shuffle([4,4,4,8,8,8]);
+    let upper=[0,1,2,5,0,1,2,5,0,1,2,5];
+    for(let attempt=0;attempt<10;attempt++){const candidate=shuffle([...upper]);if(!candidate.some((type,i)=>i>1&&type===candidate[i-1]&&type===candidate[i-2])){upper=candidate;break}}
+    lower.forEach((type,i)=>nodes.push({id:'b'+id++,kind:'board',z:0,x:417+(i%3)*168,y:200+Math.floor(i/3)*110,active:true,type}));
+    upper.forEach((type,i)=>nodes.push({id:'b'+id++,kind:'board',z:1,x:375+(i%6)*84,y:164+Math.floor(i/6)*110,active:true,type}));
+    return nodes;
+  }
   LAYERS.forEach((cells,z)=>cells.forEach(([gx,gy])=>nodes.push({id:'b'+id++,kind:'board',z,x:TOP_X+gx*STEP,y:TOP_Y+gy*STEP,active:true,type:0})));
   for(let i=0;i<12;i++)nodes.push({id:'l'+i,kind:'left',stackIndex:i,z:100+i,active:true,type:0});
   for(let i=0;i<12;i++)nodes.push({id:'r'+i,kind:'right',stackIndex:i,z:100+i,active:true,type:0});
@@ -188,7 +187,7 @@ function assignSolvableTypes(){
 function snapshot(){return{types:state.nodes.map(n=>n.type),matches:state.matches,active:state.nodes.map(n=>n.active),tray:state.tray.map(x=>({...x})),reserve:state.reserve.map(x=>({...x})),tools:{...state.tools},ended:state.ended}}
 function restore(s){state.nodes.forEach((n,i)=>{n.active=s.active[i];n.type=s.types[i]});state.matches=s.matches;state.tray=s.tray.map(x=>({...x}));state.reserve=s.reserve.map(x=>({...x}));state.tools={...s.tools};state.ended=s.ended;hideEnd();renderAll()}
 function save(){state.history.push(snapshot());if(state.history.length>40)state.history.shift()}
-function renderEnd(){if(!state.outcome)return;document.querySelector('#endCard h2').textContent=t(state.outcome);document.querySelector('#endCard p').textContent=t(state.outcome==='win'?(mode==='easy'?'easyWin':'winText'):'loseText');document.querySelector('#classicNext').hidden=!(mode==='easy'&&state.outcome==='win')}
+function renderEnd(){if(!state.outcome)return;document.querySelector('#endCard h2').textContent=t(state.outcome);document.querySelector('#endCard p').textContent=t(state.outcome==='win'?(mode==='easy'?'easyWin':'winText'):'loseText');document.querySelector('#classicNext').hidden=!(mode==='easy'&&state.outcome==='lose');document.querySelector('#replayBtn').textContent=t(mode==='easy'&&state.outcome==='win'?'tryClassic':'replay')}
 function end(outcome){state.ended=true;state.outcome=outcome;pause();if(session){session.completed=outcome==='win';session.outcome=outcome}track(outcome==='win'?'game_complete':'game_over',{outcome,matches:state.matches});renderEnd();overlay.classList.add('show');document.querySelector('#replayBtn').focus()}
 function hideEnd(){overlay.classList.remove('show');state.outcome=null}
 function animateMatch(type,indices){
@@ -226,8 +225,9 @@ function renderGuide(){
 function localize(){
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';document.title=t('title');
   document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
-  document.querySelector('#languageSelect').value=lang;document.querySelector('#modeSelect').value=mode;
-  for(const [id,key] of [['newBtn','restart'],['helpBtn','hint'],['settingsBtn','settings'],['endSettingsBtn','settings']]){document.getElementById(id).title=t(key);document.getElementById(id).setAttribute('aria-label',t(key))}
+  document.querySelector('#guide h2').textContent=t(mode==='easy'?'introTitle':'howTitle');document.querySelector('#skipIntro').hidden=mode!=='easy';
+  document.querySelectorAll('.language-toggle').forEach(button=>{button.querySelector('span').textContent=lang==='zh'?'En':'中';button.title=lang==='zh'?'Switch to English':'切换为中文';button.setAttribute('aria-label',button.title)});
+  for(const [id,key] of [['newBtn','restart'],['helpBtn','hint']]){document.getElementById(id).title=t(key);document.getElementById(id).setAttribute('aria-label',t(key))}
   renderEnd();
 }
 function renderAll(){renderBoard();renderStack(document.querySelector('#leftStack'),'left');renderStack(document.querySelector('#rightStack'),'right');renderTray();renderTools();renderGuide()}
@@ -241,15 +241,10 @@ document.querySelector('#moveBtn').onclick=()=>{if(state.ended||!state.tools.mov
 document.querySelector('#undoBtn').onclick=()=>{if(state.ended||!state.tools.undo||!state.history.length)return;const use=state.tools.undo-1,s=state.history.pop();restore(s);state.tools.undo=use;state.feedback='undone';track('tool_used',{tool:'undo'});renderAll()};
 document.querySelector('#helpBtn').onclick=()=>{if(state.ended)return;const av=state.nodes.filter(n=>n.active&&!blocked(n));const n=av.find(x=>state.tray.some(t=>t.type===x.type))||av[0];if(n){clearTimeout(state.hintTimer);state.hintId=n.id;state.feedback='hintText';track('hint_used');renderAll();state.hintTimer=setTimeout(()=>{state.hintId=null;renderAll()},1500)}};
 function changeMode(next){if(next===mode)return;const previous=mode;exit();mode=next;remember('mode',mode);track('mode_changed',{previous_mode:previous});newGame('mode_change')}
-const settingsDialog=document.querySelector('#settingsDialog');
-function openSettings(){settingsDialog.showModal();track('settings_opened')}
-document.querySelector('#settingsBtn').onclick=openSettings;document.querySelector('#endSettingsBtn').onclick=openSettings;
-document.querySelector('#closeSettings').onclick=()=>settingsDialog.close();
-settingsDialog.addEventListener('click',event=>{if(event.target===settingsDialog){const r=settingsDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)settingsDialog.close()}});
-document.querySelector('#modeSelect').onchange=event=>{changeMode(event.target.value);settingsDialog.close()};
-document.querySelector('#languageSelect').onchange=event=>{const previous=lang;lang=event.target.value;remember('language',lang);localize();renderAll();track('language_changed',{previous_language:previous})};
-document.querySelector('#newBtn').onclick=()=>newGame();document.querySelector('#replayBtn').onclick=()=>newGame();document.querySelector('#classicNext').onclick=()=>changeMode('classic');
-paintAnimal(document.querySelector('#mascot'),0);
+document.querySelectorAll('.language-toggle').forEach(button=>button.onclick=()=>{const previous=lang;lang=lang==='zh'?'en':'zh';remember('language',lang);localize();renderAll();track('language_changed',{previous_language:previous})});
+document.querySelector('#newBtn').onclick=()=>newGame();
+document.querySelector('#replayBtn').onclick=()=>mode==='easy'&&state.outcome==='win'?changeMode('classic'):newGame();
+document.querySelector('#classicNext').onclick=()=>changeMode('classic');document.querySelector('#skipIntro').onclick=()=>changeMode('classic');
 function fit(){const s=Math.min(innerWidth/1536,innerHeight/710);document.querySelector('#game').style.transform=`scale(${s})`}addEventListener('resize',fit);fit();localize();track('game_view');newGame('initial');
 })();
 </script>
