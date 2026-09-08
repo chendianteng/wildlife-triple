@@ -1,15 +1,5 @@
-# Wildlife Triple
+# Wildlife Triple · 森林三消
 
-A browser-based layered triple-match puzzle game.
+[▶ 立即游玩 / Play now](https://chendianteng.github.io/wildlife-triple/)
 
-## Play locally
-Open `index.html` in a browser.
-
-## Deploy with GitHub Pages
-1. Create a GitHub repository named `wildlife-triple`.
-2. Upload the contents of this folder to the repository root.
-3. In **Settings → Pages**, set **Source** to **Deploy from a branch**.
-4. Select **main** and **/(root)**, then save.
-
-The site will be available at:
-`https://<your-github-username>.github.io/wildlife-triple/`
+中文 / English · 入门 / Beginner · 经典 / Classic

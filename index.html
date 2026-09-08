@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no" />
-<title>Forest Triple — Reference Layout v5</title>
+<title>Wildlife Triple · 森林三消</title>
 <style>
 :root{--tile:72px;--step:74px;--cream:#fffdf2;--deep:#0e6f63;--deep2:#075b57;--ink:#173f3a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#087c77;font-family:ui-rounded,"SF Pro Rounded","PingFang SC",system-ui,sans-serif}
 body{touch-action:manipulation}
 #viewport{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#087c77}
-#game{width:1536px;height:710px;position:relative;overflow:hidden;transform-origin:center center;background:
+#game{flex-shrink:0;width:1536px;height:710px;position:relative;overflow:hidden;transform-origin:center center;background:
  radial-gradient(circle at 49% 48%,rgba(227,255,230,.95) 0 5%,rgba(102,236,214,.52) 27%,rgba(5,148,140,.4) 49%,rgba(5,97,101,.4) 72%),
  linear-gradient(145deg,#0a8b84,#18a996 45%,#08787b 77%,#075763)}
 #game:before,#game:after{content:"";position:absolute;width:550px;height:550px;border:34px solid rgba(4,80,88,.20);border-radius:50% 20% 50% 20%;top:-272px;transform:rotate(23deg)}
@@ -19,7 +19,7 @@ body{touch-action:manipulation}
 .tile{position:absolute;width:var(--tile);height:var(--tile);border:2px solid rgba(19,66,59,.88);border-radius:6px;background:var(--cream);display:grid;place-items:center;font-size:47px;line-height:1;box-shadow:0 2px 4px rgba(0,48,45,.28);padding:0;user-select:none}
 .tile.blocked{filter:brightness(.48) saturate(.72);cursor:default}.tile.clickable{cursor:pointer;box-shadow:0 4px 8px rgba(0,48,45,.30),0 0 0 1px rgba(255,255,210,.35)}
 .tile.clickable:hover{transform:translateY(-2px)}
-.tile.hint{animation:pulse .7s ease-in-out infinite alternate}@keyframes pulse{to{box-shadow:0 0 20px 7px rgba(255,236,77,.95)}}
+.tile.hint{outline:2px solid #ffe78c;animation:pulse .7s ease-in-out infinite alternate}@keyframes pulse{to{box-shadow:0 0 20px 7px rgba(255,236,77,.95)}}
 /* exact side-stack lanes from the reference screenshot */
 .side-stack{position:absolute;width:72px;height:204px;top:295px;z-index:30000}
 #leftStack{left:227px}#rightStack{left:891px}
@@ -42,28 +42,70 @@ body{touch-action:manipulation}
 #endOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,32,36,.54);z-index:1000000}#endOverlay.show{display:flex}
 #endCard{width:390px;padding:30px 34px;border:4px solid #e2c24b;border-radius:24px;background:#fffbe1;color:#245950;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}#endCard h2{font-size:32px;margin:0 0 8px}#endCard p{font-size:17px;margin:0 0 18px}#endCard button{border:0;border-radius:14px;background:#138c70;color:white;font-size:18px;font-weight:900;padding:12px 24px;cursor:pointer}
 #rotate{position:fixed;inset:0;display:none;z-index:2000000;align-items:center;justify-content:center;background:#0a756f;color:#edffe8;font-size:25px;font-weight:900;text-align:center}@media(orientation:portrait) and (max-width:900px){#rotate{display:flex}}
+
+#settings{position:absolute;left:30px;top:32px;width:180px;z-index:50000;color:#eeffe6}
+#settings h1{font-size:25px;line-height:1.2;margin:0 0 18px}#settings small{display:block;color:#c5ead8;font-size:13px;line-height:1.5;margin-top:10px}
+.switch{display:flex;gap:5px;margin-bottom:12px}.switch button{flex:1;border:1px solid #8bd6bc;border-radius:10px;padding:10px 7px;background:#09695f;color:#eaffdd;font:700 15px system-ui;cursor:pointer}.switch button[aria-pressed="true"]{background:#f6ec99;color:#245950;border-color:#f6ec99}
+#guide{position:absolute;left:30px;top:275px;width:180px;z-index:50000;border:1px solid #83cdb4;border-radius:17px;padding:16px;background:rgba(4,83,77,.88);color:#e9ffdf;font-size:16px;line-height:1.6}#guide h2{font-size:18px;margin:0 0 10px;color:#ffe895}#guide p{margin:0 0 12px}#guide .rule{font-size:13px;color:#b8e4d0;margin:0}#feedback{position:absolute;left:340px;top:537px;width:590px;text-align:center;z-index:42000;color:#fff6b0;font-size:19px;font-weight:800;pointer-events:none}
+#effects{position:absolute;inset:0;pointer-events:none;z-index:60000}.match-ghost{position:absolute;width:66px;height:66px;display:grid;place-items:center;font-size:40px;animation:match-pop .38s ease-out forwards;pointer-events:none;filter:drop-shadow(0 0 6px #ffe78c)}@keyframes match-pop{0%{opacity:.95;transform:scale(.85)}35%{opacity:1;transform:translateY(-10px) scale(1.15)}100%{opacity:0;transform:translateY(-35px) scale(.4)}}
+button:focus-visible{outline:4px solid #fff09b;outline-offset:3px}.tool:disabled{opacity:.5;cursor:default}.tile.blocked{opacity:1}#endCard button{margin:5px}#endCard #classicNext{background:#e6bf43;color:#245950}
+@media(prefers-reduced-motion:reduce){.tile.hint{animation:none;outline:3px solid #ffe78c}.match-ghost{animation:match-fade .15s linear forwards}@keyframes match-fade{to{opacity:0}}}
 </style>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],Object.defineProperty(u,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}}),Object.defineProperty(u.people,"toString",{configurable:!0,enumerable:!0,writable:!0,value:function(){return u.toString(1)+".people (stub)"}}),o="Tl Ml El Il Al init Xl tu Jl Kl nu ho Yl au Gl capture getExtension eu xl vu calculateEventProperties du register register_once register_for_session unregister unregister_for_session gu Ql cu getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync mu identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset yu shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty fu uu createPersonProfile setInternalOrTestUser pu Fl Ol opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing ou debug do ts getPageViewId captureTraceFeedback captureTraceMetric zl".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_wqPeWWyGyaf46LEpoH2qnkWHTmQrnE2zUat5TRb8vAAL', {
+        api_host: 'https://us.i.posthog.com',
+        defaults: '2026-05-30',
+        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
+    })
+</script>
 </head>
 <body>
 <div id="viewport"><div id="game">
+  <div id="settings"><h1 data-i18n="title"></h1>
+    <div class="switch" role="group" id="languageSwitch"><button data-lang="zh">中文</button><button data-lang="en">English</button></div>
+    <div class="switch" role="group" id="modeSwitch"><button data-mode="easy" data-i18n="easy"></button><button data-mode="classic" data-i18n="classic"></button></div>
+    <small data-i18n="modeNote"></small>
+  </div>
+  <aside id="guide"><h2 data-i18n="howTitle"></h2><p id="guideText" aria-live="polite"></p><p class="rule" data-i18n="rules"></p></aside>
+  <div id="feedback" role="status"></div><div id="effects" aria-hidden="true"></div>
   <div id="progress"><i id="progressFill"></i></div><div id="status"></div><button id="newBtn">↻</button>
   <div id="board"></div>
   <div id="leftStack" class="side-stack"></div><div id="rightStack" class="side-stack"></div>
   <div id="reserve"></div><div id="trayShell"><div id="tray"></div></div>
-  <div id="toolbar"><div class="energy">⚡ <span>∞</span></div><div class="caption">三张相同自动消除</div>
-    <button class="tool" id="shuffleBtn"><span class="ico">🔀</span>洗牌<span class="count">1</span></button>
-    <button class="tool" id="moveBtn"><span class="ico">📤</span>移出<span class="count">1</span></button>
-    <button class="tool" id="undoBtn"><span class="ico">↶</span>撤回<span class="count">1</span></button>
+  <div id="toolbar"><div class="energy">⚡ <span>∞</span></div><div class="caption" data-i18n="caption"></div>
+    <button class="tool" id="shuffleBtn"><span class="ico">🔀</span><span data-i18n="shuffle"></span><span class="count">1</span></button>
+    <button class="tool" id="moveBtn"><span class="ico">📤</span><span data-i18n="move"></span><span class="count">1</span></button>
+    <button class="tool" id="undoBtn"><span class="ico">↶</span><span data-i18n="undo"></span><span class="count">1</span></button>
   </div>
   <button id="helpBtn">?</button><div id="mascot">🦦</div>
-  <div id="endOverlay"><div id="endCard"><h2></h2><p></p><button>再来一局</button></div></div>
-</div></div><div id="rotate">请将手机横过来玩</div>
+  <div id="endOverlay" role="dialog" aria-modal="true" aria-labelledby="endTitle"><div id="endCard"><div class="switch"><button data-lang="zh">中文</button><button data-lang="en">English</button></div><h2 id="endTitle"></h2><p></p><button id="replayBtn" data-i18n="replay"></button><button id="classicNext" data-i18n="tryClassic" hidden></button></div></div>
+</div></div><div id="rotate" data-i18n="rotate"></div>
 <script>
 (()=>{
 'use strict';
 const TYPES=["🐼","🦋","🐌","🐦","🦎","🦊","🐵","🐻","🌺","🌿","🌳","🐘"];
 const TILE=72, STEP=74;
-const state={nodes:[],byId:new Map(),tray:[],reserve:[],history:[],startCount:0,ended:false,hintId:null,tools:{shuffle:1,move:1,undo:1}};
+const copy={
+ zh:{title:'森林三消',easy:'入门',classic:'经典',modeNote:'切换模式会开始新一局',caption:'三张相同自动消除',shuffle:'洗牌',move:'移出',undo:'撤回',replay:'再来一局',tryClassic:'挑战经典模式',rotate:'请将手机横过来玩',howTitle:'怎么玩',rules:'点击亮着的卡牌，收集 3 张相同图案即可消除。别让 7 个卡槽装满！',intro:'先点一张发光的卡牌，试试看！',one:'很好！再找 2 张相同的 {animal}。',two:'再点 1 张 {animal}，马上消除！',matched:'消除了！空位已释放，继续找下一组吧。',classicGuide:'先观察亮着的牌，尽量凑齐同一种。暗色卡牌要移开上面的牌才能选。',match:'✨ 三消成功！已消除 {count} 组',remaining:'剩余 {remaining}/{total}',win:'通关！',winText:'全部卡牌已经清空。',easyWin:'太棒了，完成了 6 次三消！准备好挑战叠层棋盘了吗？',lose:'游戏结束',loseText:'7 个卡槽已满。再试一次，优先凑齐三张相同的牌。',restart:'重新开始',hint:'提示',language:'语言',mode:'游戏模式',shuffleTip:'打乱剩余卡牌的图案',moveTip:'将前 3 张卡牌移到暂存区，点击可放回',undoTip:'撤回上一步操作',moved:'卡牌已暂存，点击它们可放回卡槽。',shuffled:'已经洗牌，找找新的组合。',undone:'已撤回上一步。',hintText:'试试发光的卡牌。',clearLabel:'可选择',blockedLabel:'被遮挡',reserveLabel:'放回卡槽'},
+ en:{title:'Wildlife Triple',easy:'Beginner',classic:'Classic',modeNote:'Changing mode starts a new game',caption:'Match 3 to clear',shuffle:'Shuffle',move:'Set aside',undo:'Undo',replay:'Play again',tryClassic:'Try Classic',rotate:'Turn your phone sideways to play',howTitle:'How to play',rules:'Tap bright tiles. Collect 3 of the same animal to clear them. Keep the 7-slot tray from filling up!',intro:'Tap a glowing tile to get started!',one:'Nice! Find 2 more {animal} tiles.',two:'One more {animal} to make your first match!',matched:'Cleared! Those slots are free. Find your next trio.',classicGuide:'Look for matching bright tiles. Dark tiles unlock when you remove the tiles covering them.',match:'✨ Triple matched! {count} sets cleared',remaining:'Left {remaining}/{total}',win:'You did it!',winText:'Every tile is cleared.',easyWin:'You made 6 matches! Ready to try a layered board?',lose:'Tray full',loseText:'All 7 slots are full. Try again and focus on matching three of a kind.',restart:'Restart game',hint:'Hint',language:'Language',mode:'Game mode',shuffleTip:'Shuffle the animals on the remaining tiles',moveTip:'Set the first 3 tiles aside; tap them to return',undoTip:'Take back your last move',moved:'Tiles set aside. Tap them to return to the tray.',shuffled:'Shuffled! Look for new matches.',undone:'Last move undone.',hintText:'Try a glowing tile.',clearLabel:'Available',blockedLabel:'Covered',reserveLabel:'Return to tray'}
+};
+function preference(key,fallback){try{return localStorage.getItem('wildlife-triple-'+key)||fallback}catch{return fallback}}
+function remember(key,value){try{localStorage.setItem('wildlife-triple-'+key,value)}catch{}}
+let lang=preference('language',navigator.language.toLowerCase().startsWith('zh')?'zh':'en');if(!copy[lang])lang='en';
+let mode=preference('mode','easy');if(!['easy','classic'].includes(mode))mode='easy';
+const t=(key,values={})=>Object.entries(values).reduce((text,[key,value])=>text.replaceAll('{'+key+'}',value),copy[lang][key]);
+let session=null;
+const activeSeconds=()=>session?Math.floor((session.ms+(session.since===null?0:performance.now()-session.since))/1000):0;
+function track(event,properties={}){try{window.posthog?.capture(event,{game_id:'wildlife-triple',game_name:'Wildlife Triple',language:lang,mode,active_seconds:activeSeconds(),...properties})}catch{}}
+function pause(){if(session&&session.since!==null){session.ms+=performance.now()-session.since;session.since=null}}
+function exit(){if(!session)return;pause();track('game_exit',{completed:session.completed,outcome:session.outcome});session=null}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();else if(session&&!state.ended&&session.since===null)session.since=performance.now()});
+addEventListener('pagehide',exit);
+addEventListener('pageshow',event=>{if(event.persisted&&!state.ended&&!session){session={ms:0,since:document.hidden?null:performance.now(),completed:false,outcome:null};track('game_start',{resumed:true})}});
+try{window.posthog?.register({game_id:'wildlife-triple',game_name:'Wildlife Triple'})}catch{}
+
+const state={nodes:[],byId:new Map(),tray:[],reserve:[],history:[],startCount:0,ended:false,hintId:null,hintTimer:null,matches:0,feedback:null,outcome:null,tools:{shuffle:1,move:1,undo:1}};
 const boardEl=document.querySelector('#board'),trayEl=document.querySelector('#tray'),reserveEl=document.querySelector('#reserve'),overlay=document.querySelector('#endOverlay');
 const TOP_X=338, TOP_Y=56;
 // Exact opening white-card geometry measured from the supplied screenshot.
@@ -94,6 +136,7 @@ const LAYERS=[
 ];
 function makeNodes(){
   const nodes=[];let id=0;
+  if(mode==='easy')return Array.from({length:18},(_,i)=>({id:'b'+i,kind:'board',z:0,x:375+(i%6)*84,y:164+Math.floor(i/6)*90,active:true,type:Math.floor(i/3)%3}));
   LAYERS.forEach((cells,z)=>cells.forEach(([gx,gy])=>nodes.push({id:'b'+id++,kind:'board',z,x:TOP_X+gx*STEP,y:TOP_Y+gy*STEP,active:true,type:0})));
   for(let i=0;i<12;i++)nodes.push({id:'l'+i,kind:'left',stackIndex:i,z:100+i,active:true,type:0});
   for(let i=0;i<12;i++)nodes.push({id:'r'+i,kind:'right',stackIndex:i,z:100+i,active:true,type:0});
@@ -118,33 +161,68 @@ function assignSolvableTypes(){
   let last=-1;
   for(let i=0;i<merged.length;i+=3){let t=Math.floor(Math.random()*TYPES.length);if(t===last)t=(t+1+Math.floor(Math.random()*(TYPES.length-1)))%TYPES.length;last=t;for(let k=0;k<3;k++)state.byId.get(merged[i+k]).type=t}
 }
-function snapshot(){return{active:state.nodes.map(n=>n.active),tray:state.tray.map(x=>({...x})),reserve:state.reserve.map(x=>({...x})),tools:{...state.tools},ended:state.ended}}
-function restore(s){state.nodes.forEach((n,i)=>n.active=s.active[i]);state.tray=s.tray.map(x=>({...x}));state.reserve=s.reserve.map(x=>({...x}));state.tools={...s.tools};state.ended=s.ended;hideEnd();renderAll()}
+function snapshot(){return{types:state.nodes.map(n=>n.type),matches:state.matches,active:state.nodes.map(n=>n.active),tray:state.tray.map(x=>({...x})),reserve:state.reserve.map(x=>({...x})),tools:{...state.tools},ended:state.ended}}
+function restore(s){state.nodes.forEach((n,i)=>{n.active=s.active[i];n.type=s.types[i]});state.matches=s.matches;state.tray=s.tray.map(x=>({...x}));state.reserve=s.reserve.map(x=>({...x}));state.tools={...s.tools};state.ended=s.ended;hideEnd();renderAll()}
 function save(){state.history.push(snapshot());if(state.history.length>40)state.history.shift()}
-function end(title,text){state.ended=true;document.querySelector('#endCard h2').textContent=title;document.querySelector('#endCard p').textContent=text;overlay.classList.add('show')}
-function hideEnd(){overlay.classList.remove('show')}
+function renderEnd(){if(!state.outcome)return;document.querySelector('#endCard h2').textContent=t(state.outcome);document.querySelector('#endCard p').textContent=t(state.outcome==='win'?(mode==='easy'?'easyWin':'winText'):'loseText');document.querySelector('#classicNext').hidden=!(mode==='easy'&&state.outcome==='win')}
+function end(outcome){state.ended=true;state.outcome=outcome;pause();if(session){session.completed=outcome==='win';session.outcome=outcome}track(outcome==='win'?'game_complete':'game_over',{outcome,matches:state.matches});renderEnd();overlay.classList.add('show');document.querySelector('#replayBtn').focus()}
+function hideEnd(){overlay.classList.remove('show');state.outcome=null}
+function animateMatch(type,indices){
+  const game=document.querySelector('#game').getBoundingClientRect(),scale=game.width/1536;
+  indices.forEach(index=>{const slot=trayEl.children[index].getBoundingClientRect(),ghost=document.createElement('span');ghost.className='match-ghost';ghost.textContent=TYPES[type];ghost.style.left=((slot.left-game.left)/scale+(slot.width/scale-66)/2)+'px';ghost.style.top=((slot.top-game.top)/scale)+'px';document.querySelector('#effects').appendChild(ghost);ghost.addEventListener('animationend',()=>ghost.remove(),{once:true});setTimeout(()=>ghost.remove(),500)});
+}
 function addToTray(type){
   let idx=-1;for(let i=state.tray.length-1;i>=0;i--)if(state.tray[i].type===type){idx=i;break}
+  state.feedback=null;
   const e={type,uid:Math.random().toString(36).slice(2)};idx<0?state.tray.push(e):state.tray.splice(idx+1,0,e);
   let same=state.tray.filter(x=>x.type===type).length;
-  if(same>=3){let removed=0;state.tray=state.tray.filter(x=>{if(x.type===type&&removed<3){removed++;return false}return true})}
+  if(same>=3){animateMatch(type,state.tray.map((x,i)=>x.type===type?i:-1).filter(i=>i>=0).slice(0,3));state.matches++;state.feedback='match';track('triple_match',{matches:state.matches,tray_count:state.tray.length-3});let removed=0;state.tray=state.tray.filter(x=>{if(x.type===type&&removed<3){removed++;return false}return true})}
   if(state.tray.length===7)return 'lose';
   const any=state.nodes.some(n=>n.active)||state.reserve.length;if(!any&&state.tray.length===0)return 'win';
   return null;
 }
-function clickNode(id){if(state.ended)return;const n=state.byId.get(id);if(!n||!n.active||blocked(n))return;save();n.active=false;const out=addToTray(n.type);renderAll();if(out==='lose')end('游戏结束','7 个卡槽已满，没有可消除的三张相同卡牌。');if(out==='win')end('通关！','全部卡牌已经清空。')}
-function renderBoard(){boardEl.innerHTML='';state.nodes.filter(n=>n.kind==='board'&&n.active).sort((a,b)=>a.z-b.z||a.y-b.y||a.x-b.x).forEach(n=>{const b=document.createElement('button');b.className='tile '+(blocked(n)?'blocked':'clickable');b.style.left=n.x+'px';b.style.top=n.y+'px';b.style.zIndex=1000+n.z*1000+Math.round(n.y);b.textContent=TYPES[n.type];if(state.hintId===n.id)b.classList.add('hint');b.onclick=()=>clickNode(n.id);boardEl.appendChild(b)})}
-function renderStack(el,kind){el.innerHTML='';const arr=state.nodes.filter(n=>n.kind===kind&&n.active).sort((a,b)=>a.stackIndex-b.stackIndex);const shown=Math.min(12,arr.length);for(let i=0;i<shown;i++){const d=document.createElement('div');d.className='stack-back';d.style.top=(131-i*12)+'px';d.style.zIndex=i;el.appendChild(d)}if(arr.length){const n=arr.at(-1),b=document.createElement('button');b.className='tile clickable stack-tile';b.textContent=TYPES[n.type];b.onclick=()=>clickNode(n.id);el.appendChild(b)}}
-function renderTray(){trayEl.innerHTML='';for(let i=0;i<7;i++){const s=document.createElement('div');s.className='slot';if(state.tray[i]){const c=document.createElement('div');c.className='tray-card';c.textContent=TYPES[state.tray[i].type];s.appendChild(c)}trayEl.appendChild(s)}reserveEl.innerHTML='';state.reserve.forEach((r,i)=>{const b=document.createElement('button');b.className='reserve-card';b.textContent=TYPES[r.type];b.onclick=()=>{if(state.ended)return;save();state.reserve.splice(i,1);const out=addToTray(r.type);renderAll();if(out==='lose')end('游戏结束','7 个卡槽已满，没有可消除的三张相同卡牌。');if(out==='win')end('通关！','全部卡牌已经清空。')};reserveEl.appendChild(b)})}
-function renderTools(){const rem=state.nodes.filter(n=>n.active).length+state.reserve.length,p=Math.round((state.startCount-rem)/state.startCount*100);document.querySelector('#progressFill').style.width=Math.max(2,p)+'%';document.querySelector('#status').textContent=`剩余 ${rem}/${state.startCount}`;document.querySelector('#shuffleBtn .count').textContent=state.tools.shuffle;document.querySelector('#moveBtn .count').textContent=state.tools.move;document.querySelector('#undoBtn .count').textContent=state.tools.undo}
-function renderAll(){renderBoard();renderStack(document.querySelector('#leftStack'),'left');renderStack(document.querySelector('#rightStack'),'right');renderTray();renderTools()}
-function newGame(){hideEnd();state.tray=[];state.reserve=[];state.history=[];state.ended=false;state.hintId=null;state.tools={shuffle:1,move:1,undo:1};state.nodes=makeNodes();state.byId=new Map(state.nodes.map(n=>[n.id,n]));assignSolvableTypes();state.startCount=state.nodes.length;renderAll()}
-document.querySelector('#shuffleBtn').onclick=()=>{if(state.ended||!state.tools.shuffle)return;save();state.tools.shuffle--;const active=state.nodes.filter(n=>n.active),vals=shuffle(active.map(n=>n.type));active.forEach((n,i)=>n.type=vals[i]);renderAll()}
-document.querySelector('#moveBtn').onclick=()=>{if(state.ended||!state.tools.move||!state.tray.length)return;save();state.tools.move--;state.reserve.push(...state.tray.splice(0,Math.min(3,state.tray.length)));renderAll()}
-document.querySelector('#undoBtn').onclick=()=>{if(state.ended||!state.tools.undo||!state.history.length)return;const use=state.tools.undo-1,s=state.history.pop();restore(s);state.tools.undo=use;renderAll()}
-document.querySelector('#helpBtn').onclick=()=>{if(state.ended)return;const av=state.nodes.filter(n=>n.active&&!blocked(n));let n=av.find(x=>state.tray.some(t=>t.type===x.type))||av[0];if(n){state.hintId=n.id;renderAll();setTimeout(()=>{state.hintId=null;renderAll()},1500)}}
-document.querySelector('#newBtn').onclick=newGame;document.querySelector('#endCard button').onclick=newGame;
-function fit(){const s=Math.min(innerWidth/1536,innerHeight/710);document.querySelector('#game').style.transform=`scale(${s})`}addEventListener('resize',fit);fit();newGame();
+function clickNode(id){if(state.ended)return;const n=state.byId.get(id);if(!n||!n.active||blocked(n))return;save();n.active=false;const out=addToTray(n.type);renderAll();if(out)end(out)}
+function renderBoard(){boardEl.innerHTML='';state.nodes.filter(n=>n.kind==='board'&&n.active).sort((a,b)=>a.z-b.z||a.y-b.y||a.x-b.x).forEach(n=>{const b=document.createElement('button');b.className='tile '+(blocked(n)?'blocked':'clickable');b.style.left=n.x+'px';b.style.top=n.y+'px';b.style.zIndex=1000+n.z*1000+Math.round(n.y);b.textContent=TYPES[n.type];b.dataset.id=n.id;b.disabled=blocked(n);b.setAttribute('aria-label',TYPES[n.type]+' '+t(b.disabled?'blockedLabel':'clearLabel'));if(isHint(n))b.classList.add('hint');b.onclick=()=>clickNode(n.id);boardEl.appendChild(b)})}
+function renderStack(el,kind){el.innerHTML='';const arr=state.nodes.filter(n=>n.kind===kind&&n.active).sort((a,b)=>a.stackIndex-b.stackIndex);const shown=Math.min(12,arr.length);for(let i=0;i<shown;i++){const d=document.createElement('div');d.className='stack-back';d.style.top=(131-i*12)+'px';d.style.zIndex=i;el.appendChild(d)}if(arr.length){const n=arr.at(-1),b=document.createElement('button');b.className='tile clickable stack-tile';if(isHint(n))b.classList.add('hint');b.dataset.id=n.id;b.textContent=TYPES[n.type];b.setAttribute('aria-label',TYPES[n.type]+' '+t('clearLabel'));b.onclick=()=>clickNode(n.id);el.appendChild(b)}}
+function renderTray(){trayEl.innerHTML='';for(let i=0;i<7;i++){const s=document.createElement('div');s.className='slot';if(state.tray[i]){const c=document.createElement('div');c.className='tray-card';c.textContent=TYPES[state.tray[i].type];s.appendChild(c)}trayEl.appendChild(s)}reserveEl.innerHTML='';state.reserve.forEach((r,i)=>{const b=document.createElement('button');b.className='reserve-card';b.textContent=TYPES[r.type];b.setAttribute('aria-label',TYPES[r.type]+' '+t('reserveLabel'));b.onclick=()=>{if(state.ended)return;save();state.reserve.splice(i,1);const out=addToTray(r.type);renderAll();if(out)end(out)};reserveEl.appendChild(b)})}
+function renderTools(){
+  const rem=state.nodes.filter(n=>n.active).length+state.reserve.length+state.tray.length;
+  document.querySelector('#progressFill').style.width=((state.startCount-rem)/state.startCount*100)+'%';
+  document.querySelector('#status').textContent=t('remaining',{remaining:rem,total:state.startCount});
+  for(const tool of ['shuffle','move','undo']){const button=document.querySelector('#'+tool+'Btn');button.querySelector('.count').textContent=state.tools[tool];button.disabled=state.ended||!state.tools[tool]||(tool==='move'&&!state.tray.length)||(tool==='undo'&&!state.history.length);button.title=t(tool+'Tip')}
+}
+function suggestedType(){return state.tray[0]?.type??state.nodes.find(n=>n.active&&!blocked(n))?.type}
+function isHint(n){return state.hintId===n.id||(mode==='easy'&&state.matches===0&&!blocked(n)&&n.type===suggestedType())}
+function renderGuide(){
+  const count=state.tray.filter(n=>n.type===suggestedType()).length;
+  const key=mode==='classic'?'classicGuide':state.matches?'matched':count===2?'two':count===1?'one':'intro';
+  document.querySelector('#guideText').textContent=t(key,{animal:TYPES[suggestedType()]});
+  document.querySelector('#feedback').textContent=state.feedback&&state.reserve.length===0?t(state.feedback,{count:state.matches}):'';if(state.reserve.length)document.querySelector('#guideText').textContent=t('moved');
+}
+function localize(){
+  document.documentElement.lang=lang==='zh'?'zh-CN':'en';document.title=t('title');
+  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
+  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===lang)));
+  document.querySelectorAll('[data-mode]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.mode===mode)));
+  document.querySelector('#languageSwitch').setAttribute('aria-label',t('language'));document.querySelector('#modeSwitch').setAttribute('aria-label',t('mode'));
+  for(const [id,key] of [['newBtn','restart'],['helpBtn','hint']]){document.getElementById(id).title=t(key);document.getElementById(id).setAttribute('aria-label',t(key))}
+  renderEnd();
+}
+function renderAll(){renderBoard();renderStack(document.querySelector('#leftStack'),'left');renderStack(document.querySelector('#rightStack'),'right');renderTray();renderTools();renderGuide()}
+function newGame(reason='restart'){
+  if(session){exit();track('game_restart',{reason})}
+  hideEnd();clearTimeout(state.hintTimer);document.querySelector('#effects').replaceChildren();state.tray=[];state.reserve=[];state.history=[];state.ended=false;state.hintId=null;state.matches=0;state.feedback=null;state.tools={shuffle:1,move:1,undo:1};state.nodes=makeNodes();state.byId=new Map(state.nodes.map(n=>[n.id,n]));if(mode==='classic')assignSolvableTypes();state.startCount=state.nodes.length;
+  session={ms:0,since:document.hidden?null:performance.now(),completed:false,outcome:null};localize();renderAll();track('game_start',{tile_count:state.startCount,reason});
+}
+document.querySelector('#shuffleBtn').onclick=()=>{if(state.ended||!state.tools.shuffle)return;save();state.tools.shuffle--;const active=state.nodes.filter(n=>n.active),vals=shuffle(active.map(n=>n.type));active.forEach((n,i)=>n.type=vals[i]);state.feedback='shuffled';track('tool_used',{tool:'shuffle'});renderAll()};
+document.querySelector('#moveBtn').onclick=()=>{if(state.ended||!state.tools.move||!state.tray.length)return;save();state.tools.move--;state.reserve.push(...state.tray.splice(0,Math.min(3,state.tray.length)));state.feedback='moved';track('tool_used',{tool:'move'});renderAll()};
+document.querySelector('#undoBtn').onclick=()=>{if(state.ended||!state.tools.undo||!state.history.length)return;const use=state.tools.undo-1,s=state.history.pop();restore(s);state.tools.undo=use;state.feedback='undone';track('tool_used',{tool:'undo'});renderAll()};
+document.querySelector('#helpBtn').onclick=()=>{if(state.ended)return;const av=state.nodes.filter(n=>n.active&&!blocked(n));const n=av.find(x=>state.tray.some(t=>t.type===x.type))||av[0];if(n){clearTimeout(state.hintTimer);state.hintId=n.id;state.feedback='hintText';track('hint_used');renderAll();state.hintTimer=setTimeout(()=>{state.hintId=null;renderAll()},1500)}};
+function changeMode(next){if(next===mode)return;const previous=mode;exit();mode=next;remember('mode',mode);track('mode_changed',{previous_mode:previous});newGame('mode_change')}
+document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>changeMode(button.dataset.mode));
+document.querySelectorAll('[data-lang]').forEach(button=>button.onclick=()=>{if(lang===button.dataset.lang)return;const previous=lang;lang=button.dataset.lang;remember('language',lang);localize();renderAll();track('language_changed',{previous_language:previous})});
+document.querySelector('#newBtn').onclick=()=>newGame();document.querySelector('#replayBtn').onclick=()=>newGame();document.querySelector('#classicNext').onclick=()=>changeMode('classic');
+function fit(){const s=Math.min(innerWidth/1536,innerHeight/710);document.querySelector('#game').style.transform=`scale(${s})`}addEventListener('resize',fit);fit();localize();track('game_view');newGame('initial');
 })();
 </script>
 </body></html>
