@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png" href="assets/game-icon.png" />
 <link rel="apple-touch-icon" href="assets/game-icon.png" />
 <link rel="preload" as="image" href="assets/wildlife-atlas.png" />
+<link rel="preload" as="image" href="assets/wildlife-extra.png" />
 <meta property="og:title" content="Wildlife Triple · 森林三消" />
 <meta property="og:image" content="https://chendianteng.github.io/wildlife-triple/assets/game-icon.png" />
 <meta name="theme-color" content="#087c77" />
@@ -67,20 +68,20 @@ html,body{height:auto;min-height:100%;overflow:auto}body{min-height:100dvh}#view
 #arena{position:relative;z-index:1;grid-column:2;grid-row:2;min-width:0;display:flex;flex-direction:column;align-items:stretch;gap:12px}.progress-row{display:flex;align-items:center;gap:20px;min-height:20px;padding:0 14px}#progress{position:static;width:auto;flex:1;height:6px}#status{position:static;white-space:nowrap;font-size:13px}
 #playArea{position:relative;width:100%;height:466px}#playfield{position:absolute;left:50%;top:0;width:760px;height:466px;margin-left:-380px;transform-origin:center top;isolation:isolate}#board{inset:auto;left:-215px;top:-45px;width:1000px;height:560px;pointer-events:none}.tile{pointer-events:auto}.side-stack{top:250px}#leftStack{left:12px}#rightStack{left:676px}
 #boardMessage{height:54px;flex:none;display:grid;align-items:center}#boardMessage>*{grid-area:1/1}#reserve{position:relative;inset:auto;min-height:0;height:54px;justify-content:center;gap:8px}#reserve:empty{display:none}#feedback{position:relative;inset:auto;width:auto;font-size:15px}#feedback:empty{display:none}
-#trayShell{position:relative;inset:auto;width:100%;max-width:760px;height:86px;align-self:center;padding:9px 16px;border-radius:30px}#tray{height:68px;padding:3px 6px;border-radius:22px}.slot{height:62px}.tray-card{width:58px;height:58px}
+#trayShell{position:relative;inset:auto;width:100%;max-width:520px;height:86px;align-self:center;padding:9px 16px;border-radius:30px}#tray{height:68px;padding:3px 6px;border-radius:22px}.slot{height:62px}.tray-card{width:58px;height:58px}
 #toolbar{position:relative;inset:auto;width:auto;grid-column:3;grid-row:2;display:flex;flex-direction:column;gap:20px;margin-top:44px}.tool{width:100%;height:82px;margin:0;font-size:18px}.tool .count{right:-5px;top:-10px;width:30px;height:30px;font-size:16px;border-width:2px}
 #effects{position:fixed;inset:0}#endOverlay{position:fixed;inset:0;padding:16px;overflow:auto}#endCard{width:min(390px,100%);max-height:calc(100dvh - 32px);overflow:auto}#rotate{display:none!important}
 @media(max-width:1000px) and (orientation:landscape){
  #game{padding:12px 16px;grid-template-columns:128px minmax(0,1fr) 128px;column-gap:14px;row-gap:10px}#settings h1{font-size:19px}#gameIcon{width:36px;height:36px}.brand{min-height:36px}.header-actions button{min-height:36px;padding:7px 12px;font-size:14px}#newBtn{font-size:14px}
  #arena{gap:7px}.progress-row{min-height:16px;padding:0 8px;gap:10px}#status{font-size:11px}#guide{padding:10px;margin-top:24px;font-size:12px;line-height:1.5}#guide h2{font-size:14px;margin-bottom:7px}#guide .rule{display:none}#guide p{margin-bottom:0}#skipIntro{font-size:12px}
  #toolbar{gap:14px;margin-top:24px}.tool{height:62px;font-size:14px;border-radius:15px;border-width:2px}.tool .ico{height:24px;margin-bottom:2px}.tool svg{width:23px;height:23px}.tool .count{width:24px;height:24px;font-size:13px;top:-7px}
- #trayShell{height:54px;padding:5px 10px;border-radius:22px}#tray{height:44px;padding:2px 4px;border-radius:16px}.slot{height:40px}.tray-card{width:38px;height:38px}#boardMessage,#reserve{height:38px}.reserve-card{width:36px;height:36px}#feedback{font-size:12px}
+ #trayShell{max-width:350px;height:54px;padding:5px 10px;border-radius:22px}#tray{height:44px;padding:2px 4px;border-radius:16px}.slot{height:40px}.tray-card{width:38px;height:38px}#boardMessage,#reserve{height:38px}.reserve-card{width:36px;height:36px}#feedback{font-size:12px}
 }
 @media(orientation:portrait) and (max-width:1000px){
  #game{padding: max(14px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;row-gap:16px;min-height:100dvh;align-content:start}
  #settings{grid-column:1;grid-row:1;gap:8px}.brand{gap:6px;min-height:36px;min-width:0}#gameIcon{width:32px;height:32px;border-radius:10px}#settings h1{font-size:clamp(14px,3.8vw,19px);max-width:116px}.header-actions{gap:5px;flex:none}.header-actions button{min-height:40px;padding:8px 10px;font-size:13px}#newBtn{font-size:13px;white-space:nowrap}
  #arena{grid-column:1;grid-row:2;gap:10px}.progress-row{padding:0 4px;gap:16px}#status{font-size:12px}#playfield{width:688px;height:562px;margin-left:-344px}#board{left:-252px}#leftStack{left:76px}#rightStack{left:540px}.side-stack{top:450px;height:105px}.stack-back{top:calc(33px - var(--stack-level)*3px)!important}.stack-tile{top:33px!important}
- #trayShell{height:64px;padding:7px 10px;border-radius:25px}#tray{height:50px;padding:3px 0;border-radius:17px}.slot{height:44px}.tray-card{width:min(42px,100%);height:42px}#boardMessage,#reserve{height:42px}.reserve-card{width:40px;height:40px}#feedback{font-size:13px}
+ #trayShell{max-width:370px;height:64px;padding:7px 10px;border-radius:25px}#tray{height:50px;padding:3px 0;border-radius:17px}.slot{height:44px}.tray-card{width:min(42px,calc(100% - 6px));height:auto;aspect-ratio:1}#boardMessage,#reserve{height:42px}.reserve-card{width:40px;height:40px}#feedback{font-size:13px}
  #toolbar{grid-column:1;grid-row:3;flex-direction:row;gap:12px;margin:0 4px}.tool{flex:1;height:55px;font-size:14px;border-width:2px;border-radius:15px;display:flex;align-items:center;justify-content:center;gap:7px}.tool .ico{height:24px;margin:0}.tool svg{width:23px;height:23px}.tool .count{width:23px;height:23px;font-size:12px;top:-8px;right:-4px}
  #guide{grid-column:1;grid-row:4;margin:0 4px;padding:12px 14px;font-size:13px;line-height:1.5}#guide h2{font-size:14px;margin-bottom:4px}#guide p{margin:0}#guide .rule{display:none}#skipIntro{margin-top:8px;font-size:13px}
  #endCard h2{font-size:27px}#endCard p{font-size:15px}#endCard button{font-size:15px;padding:10px 16px}
@@ -117,12 +118,12 @@ html,body{height:auto;min-height:100%;overflow:auto}body{min-height:100dvh}#view
 <script>
 (()=>{
 'use strict';
-const TYPES=['panda','butterfly','snail','toucan','frog','fox','monkey','bear','flower','leaf','tree','elephant'];
-const animalNames={zh:['熊猫','蝴蝶','蜗牛','巨嘴鸟','青蛙','狐狸','猴子','小熊','花朵','叶子','树木','大象'],en:['panda','butterfly','snail','toucan','frog','fox','monkey','bear','flower','leaf','tree','elephant']};
+const TYPES=['panda','butterfly','snail','toucan','frog','fox','monkey','bear','flower','leaf','tree','elephant','rabbit','cat','deer','penguin'];
+const animalNames={zh:['熊猫','蝴蝶','蜗牛','巨嘴鸟','青蛙','狐狸','猴子','小熊','花朵','叶子','树木','大象','兔子','小猫','小鹿','企鹅'],en:['panda','butterfly','snail','toucan','frog','fox','monkey','bear','flower','leaf','tree','elephant','rabbit','cat','deer','penguin']};
 const animalName=type=>animalNames[lang][type]||'';
 // Explicit source rectangles keep neighboring illustrations outside each tile.
-const artRects=[[35,70,320,290],[390,70,332,290],[750,82,309,278],[1080,85,335,280],[43,412,289,275],[388,395,320,300],[724,398,340,298],[1090,410,322,285],[43,724,300,277],[392,728,290,280],[729,710,308,305],[1048,745,383,270]];
-function paintAnimal(element,type){const ns='http://www.w3.org/2000/svg',art=document.createElementNS(ns,'svg'),image=document.createElementNS(ns,'image');art.classList.add('artwork');art.setAttribute('aria-hidden','true');art.setAttribute('viewBox',artRects[type].join(' '));image.setAttribute('href','assets/wildlife-atlas.png');image.setAttribute('width','1448');image.setAttribute('height','1086');art.appendChild(image);element.replaceChildren(art);element.dataset.type=TYPES[type]}
+const artRects=[[35,70,320,290],[390,70,332,290],[750,82,309,278],[1080,85,335,280],[43,412,289,275],[388,395,320,300],[724,398,340,298],[1090,410,322,285],[43,724,300,277],[392,728,290,280],[729,710,308,305],[1048,745,383,270],[100,45,470,575],[645,135,545,480],[50,630,575,540],[632,644,560,548]];
+function paintAnimal(element,type){const ns='http://www.w3.org/2000/svg',art=document.createElementNS(ns,'svg'),image=document.createElementNS(ns,'image');art.classList.add('artwork');art.setAttribute('aria-hidden','true');art.setAttribute('viewBox',artRects[type].join(' '));image.setAttribute('href',type<12?'assets/wildlife-atlas.png':'assets/wildlife-extra.png');image.setAttribute('width',type<12?'1448':'1254');image.setAttribute('height',type<12?'1086':'1254');art.appendChild(image);element.replaceChildren(art);element.dataset.type=TYPES[type]}
 
 
 const TILE=72, STEP=74;
@@ -165,23 +166,21 @@ function renderScores(){
 }
 const state={nodes:[],byId:new Map(),tray:[],reserve:[],history:[],startCount:0,ended:false,matches:0,feedback:null,outcome:null,tools:{shuffle:1,move:1,undo:1}};
 const boardEl=document.querySelector('#board'),trayEl=document.querySelector('#tray'),reserveEl=document.querySelector('#reserve'),overlay=document.querySelector('#endOverlay');
-const TOP_X=300, TOP_Y=56;
-// Top to bottom: broad opening, then progressively smaller staggered layers.
-// Distinct grid offsets prevent any two central tiles sharing a position.
+const TOP_X=559, TOP_Y=56;
+// Center every row on the same axis; split rows form the heart's two lobes.
+// Distinct vertical offsets keep central tiles from sharing a position.
 const LAYERS=[
-  {rows:[6,8,8,6,5,3],offset:[0,0]},
-  {rows:[5,7,7,6,5],offset:[.5,.5]},
-  {rows:[5,6,6,6,4],offset:[0,.5]},
-  {rows:[4,6,6,5,3],offset:[.5,0]},
-  {rows:[4,5,5,4,3],offset:[.25,.25]},
-  {rows:[3,5,4,3],offset:[.75,.75]},
-  {rows:[3,3,3,3],offset:[.25,.75]},
-  {rows:[3,3,3],offset:[.75,.25]}
-].map(({rows,offset:[dx,dy]})=>rows.flatMap((count,row)=>
-  Array.from({length:count},(_,col)=>[
-    Math.floor((8-count)/2)+col+dx,
-    Math.floor((6-rows.length)/2)+row+dy
-  ])
+  {rows:[[-3,-2,-1,1,2,3],9,7,5,3,1],dy:0},
+  {rows:[[-2.5,-1.5,1.5,2.5],8,8,6,4],dy:.5},
+  {rows:[[-2,-1,1,2],8,7,5,3],dy:.25},
+  {rows:[[-2,-1,1,2],7,7,5,2],dy:.75},
+  {rows:[[-1.5,1.5],6,6,4,3],dy:.125},
+  {rows:[[-1,1],5,5,3,2],dy:.625},
+  {rows:[[-1,1],4,4,3],dy:.375},
+  {rows:[[-1,1],4,3,1],dy:.875}
+].map(({rows,dy})=>rows.flatMap((cells,row)=>
+  (Array.isArray(cells)?cells:Array.from({length:cells},(_,col)=>col-(cells-1)/2))
+    .map(gx=>[gx,Math.floor((6-rows.length)/2)+row+dy])
 )).reverse();
 function makeNodes(){
   const nodes=[];let id=0;
@@ -210,8 +209,8 @@ function assignSolvableTypes(){
   const remaining=new Set(state.nodes),order=[];
   const blockers=new Map(state.nodes.map(n=>[n,state.nodes.filter(x=>covers(x,n))]));
   while(remaining.size){const available=[...remaining].filter(n=>blockers.get(n).every(x=>!remaining.has(x)));const n=available[Math.floor(Math.random()*available.length)];remaining.delete(n);order.push(n)}
-  let last=-1;
-  for(let i=0;i<order.length;i+=3){let type=Math.floor(Math.random()*TYPES.length);if(type===last)type=(type+1)%TYPES.length;last=type;for(let k=0;k<3;k++)order[i+k].type=type}
+  const groups=shuffle(Array.from({length:order.length/3},(_,i)=>i%TYPES.length));
+  for(let i=0;i<order.length;i+=3)for(let k=0;k<3;k++)order[i+k].type=groups[i/3];
 }
 function snapshot(){return{types:state.nodes.map(n=>n.type),matches:state.matches,active:state.nodes.map(n=>n.active),tray:state.tray.map(x=>({...x})),reserve:state.reserve.map(x=>({...x})),tools:{...state.tools},ended:state.ended}}
 function restore(s){state.nodes.forEach((n,i)=>{n.active=s.active[i];n.type=s.types[i]});state.matches=s.matches;state.tray=s.tray.map(x=>({...x}));state.reserve=s.reserve.map(x=>({...x}));state.tools={...s.tools};state.ended=s.ended;hideEnd();renderAll()}
